@@ -7,21 +7,45 @@ def home(request):
     print(posts)
     return render(request, 'index.html', {'posts': posts})
 
+
+def detallePost(request, slug):
+    post = Post.objects.get(
+        slug=slug
+    )
+    print(post)
+    return render(request, 'post.html')
+
+
 def generales(request):
     posts = Post.objects.filter(
         estado=True,
-        categoria = Categoria.objects.get(nombre = 'General'))
+        categoria=Categoria.objects.get(nombre='General'))
     return render(request, 'generales.html', {'posts': posts})
 
+
 def programacion(request):
-    return render(request, 'programacion.html')
+    posts = Post.objects.filter(
+        estado=True,
+        categoria=Categoria.objects.get(nombre='Programación'))
+    return render(request, 'programacion.html', {'posts': posts})
+
 
 def tutoriales(request):
-    return render(request, 'tutoriales.html')
+    posts = Post.objects.filter(
+        estado=True,
+        categoria=Categoria.objects.get(nombre='Tutoriales'))
+    return render(request, 'tutoriales.html', {'posts': posts})
 
 
 def tecnologia(request):
-    return render(request, 'tecnologia.html')
+    posts = Post.objects.filter(
+        estado=True,
+        categoria=Categoria.objects.get(nombre='Tecnologia'))
+    return render(request, 'tecnologia.html', {'posts': posts})
+
 
 def videojuegos(request):
-    return render(request, 'videojuegos.html')
+    posts = Post.objects.filter(
+        estado=True,
+        categoria=Categoria.objects.get(nombre='Videojuegos'))
+    return render(request, 'videojuegos.html', {'posts': posts})
