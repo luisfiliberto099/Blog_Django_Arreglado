@@ -47,16 +47,16 @@
                     <a class="nav-link" href="{% url 'blog:generales' %}">Generales</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="post.html">Programacion</a>
+                    <a class="nav-link" href="{% url 'blog:programacion' %}">Programacion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Video Juegos</a>
+                    <a class="nav-link" href="{% url 'blog:videojuegos' %}">Video Juegos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="post.html">Tecnología</a>
+                    <a class="nav-link" href="{% url 'blog:tecnologia' %}">Tecnología</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="post.html">Tutoriales</a>
+                    <a class="nav-link" href="{% url 'blog:tutoriales' %}">Tutoriales</a>
                 </li>
             </ul>
         </div>
@@ -64,13 +64,13 @@
 </nav>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('{% static 'img/home-bg.jpg' %}')">
+<header class="masthead" style="background-image: url({% block imagen %}{% static 'img/home-bg.jpg' %}{% endblock imagen %})">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1>Blog Luis_Dev</h1>
+                    <h1>{% block titulo_principal %}Blog Luis_Dev{% endblock titulo_principal %}</h1>
                 </div>
             </div>
         </div>
