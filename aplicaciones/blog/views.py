@@ -1,20 +1,15 @@
 from django.shortcuts import render
 from aplicaciones.blog.models import *
-
+from django.shortcuts import get_object_or_404
 
 def home(request):
     posts = Post.objects.filter(estado=True)
     print(posts)
     return render(request, 'index.html', {'posts': posts})
 
-
 def detallePost(request, slug):
-    post = Post.objects.get(
-        slug=slug
-    )
-    print(post)
-    return render(request, 'post.html')
-
+    post = get_object_or_404(Post, slug = slug)
+    return render(request, 'post.html', {'detalle_post':post})
 
 def generales(request):
     posts = Post.objects.filter(
