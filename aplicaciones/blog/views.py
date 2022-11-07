@@ -14,7 +14,7 @@ def home(request):
             Q(descripcion__icontains=queryset)
         ).distinct()
 
-    paginator = Paginator(posts, 2)
+    paginator = Paginator(posts, 4)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     return render(request, 'index.html', {'posts': posts})
@@ -47,22 +47,22 @@ def programacion(request):
     return render(request, 'programacion.html', {'posts': posts})
 
 
-def tutoriales(request):
+def informacion_didactica(request):
     posts = Post.objects.filter(
         estado=True,
-        categoria=Categoria.objects.get(nombre='Tutoriales'))
-    return render(request, 'tutoriales.html', {'posts': posts})
+        categoria=Categoria.objects.get(nombre='Información Didáctica'))
+    return render(request, 'informacion_didactica.html', {'posts': posts})
 
 
-def tecnologia(request):
+def info_carrera(request):
     posts = Post.objects.filter(
         estado=True,
-        categoria=Categoria.objects.get(nombre='Tecnologia'))
-    return render(request, 'tecnologia.html', {'posts': posts})
+        categoria=Categoria.objects.get(nombre='Información acerca de la carrera'))
+    return render(request, 'info_carrera.html', {'posts': posts})
 
 
-def videojuegos(request):
+def actividades_formacion(request):
     posts = Post.objects.filter(
         estado=True,
-        categoria=Categoria.objects.get(nombre='Videojuegos'))
-    return render(request, 'videojuegos.html', {'posts': posts})
+        categoria=Categoria.objects.get(nombre='Actividades de Formación Vocacional'))
+    return render(request, 'actividades_formacion.html', {'posts': posts})

@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aplicaciones.blog',
-    'aplicaciones.login',
     'import_export',
     'ckeditor',
 ]
