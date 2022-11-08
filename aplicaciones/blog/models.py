@@ -46,3 +46,46 @@ class Post(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class Pre_universitario(models.Model):
+    id = models.AutoField(primary_key = True)
+    nombre = models.CharField(max_length=255, null= False, blank=False, verbose_name='Nombre del instituto preuniversitario')
+    fecha_creacion = models.DateField(verbose_name='Fecha de creación', auto_now=False, auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Pre_universitario'
+        verbose_name_plural = 'Pre_universitarios'
+
+    def __str__(self):
+        return self.nombre
+
+class Profesor(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=255, null=False, blank=False, verbose_name='Nombre del profesor')
+    apellidos = models.CharField(max_length=255, null=False, blank=False, verbose_name='Apellidos del profesor')
+    su_pre = models.ForeignKey(Pre_universitario, on_delete=models.CASCADE)
+    fecha_creacion = models.DateField(verbose_name='Fecha de creación del registro', auto_now=False, auto_now_add=True)
+    fecha_nacimineto = models.DateField(verbose_name='Fecha de nacimiento', auto_created=False)
+
+    class Meta:
+        verbose_name = 'Profesor'
+        verbose_name_plural = 'Profesores'
+
+    def __str__(self):
+        return self.nombre
+
+class Estudiante(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=255, null=False, blank=False, verbose_name='Nombre del profesor')
+    apellidos = models.CharField(max_length=255, null=False, blank=False, verbose_name='Apellidos del profesor')
+    su_pre = models.ForeignKey(Pre_universitario, on_delete=models.CASCADE)
+    su_profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
+    fecha_creacion = models.DateField(verbose_name='Fecha de creación del registro', auto_now=False, auto_now_add=True)
+    fecha_nacimineto = models.DateField(verbose_name='Fecha de nacimiento', auto_created=False)
+
+    class Meta:
+        verbose_name = 'Estudiante'
+        verbose_name_plural = 'Estudiantes'
+
+    def __str__(self):
+        return self.nombre
