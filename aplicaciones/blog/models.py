@@ -76,8 +76,8 @@ class Profesor(models.Model):
 
 class Estudiante(models.Model):
     id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=255, null=False, blank=False, verbose_name='Nombre del profesor')
-    apellidos = models.CharField(max_length=255, null=False, blank=False, verbose_name='Apellidos del profesor')
+    nombre = models.CharField(max_length=255, null=False, blank=False, verbose_name='Nombre del estudiante')
+    apellidos = models.CharField(max_length=255, null=False, blank=False, verbose_name='Apellidos del estudiante')
     su_pre = models.ForeignKey(Pre_universitario, on_delete=models.CASCADE)
     su_profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
     fecha_creacion = models.DateField(verbose_name='Fecha de creación del registro', auto_now=False, auto_now_add=True)
